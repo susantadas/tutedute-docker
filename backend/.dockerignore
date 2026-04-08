@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log
+package-lock.json
+.env
+.gitignore
+Dockerfile
+.dockerignore
+dist
+build
+coverage
+.vscode
+.idea
+tmp
+temp

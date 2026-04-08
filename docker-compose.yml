@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "3001:3001"
+    command: python app.py
+    networks:
+      - projectOne-network
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      BASE_URL: "http://backend:3001"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - projectOne-network
+
+networks:
+  projectOne-network:
+    driver: bridge
